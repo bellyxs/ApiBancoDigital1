@@ -1,16 +1,5 @@
 use db_bancodigital;
 
-create table transacao(
-id int not null auto_increment,
-primary key(id),
-data_trans char(50) not null,
-valor char(200) not null,
-id_conta_enviou int not null,
-id_conta_recebeu int not null,
-foreign key (id_conta_enviou) references conta(id),
-foreign key(id_conta_recebeu) references conta(id)
-);
-
 create table correntista(
 id int not null auto_increment,
 primary key(id),
@@ -28,6 +17,17 @@ saldo double not null,
 limite varchar(45) not null,
 id_correntista int not null,
 foreign key(id_correntista) references correntista(id)
+);
+
+create table transacao(
+id int not null auto_increment,
+primary key(id),
+data_trans char(50) not null,
+valor char(200) not null,
+id_conta_enviou int not null,
+id_conta_recebeu int not null,
+foreign key (id_conta_enviou) references conta(id),
+foreign key(id_conta_recebeu) references conta(id)
 );
 
 create table chave_pix(
