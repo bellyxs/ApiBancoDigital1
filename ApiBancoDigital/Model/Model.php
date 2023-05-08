@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBancoDigital\DAO\Model; 
+namespace ApiBancoDigital\Model; 
 use Exception;
 
 abstract class Model{

@@ -69,4 +69,17 @@ class CorrentistaDAO extends DAO
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
+
+    public function search(string $query) : array
+    {
+        $str_query = ['filtro' => '%' . $query . '%'];
+
+        $sql = "SELECT * FROM correntista WHERE nome LIKE :filtro ";
+
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute($str_query);
+
+        return $stmt->fetchAll(DAO::FETCH_CLASS, "ApiBancoDigital\Model\CorrentistaModel");
+    }
 }
+

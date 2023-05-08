@@ -2,7 +2,6 @@
 
 namespace ApiBancoDigital\Model;
 use ApiBancoDigital\DAO\CorrentistaDAO;
-use ApiBancoDigital\DAO\Model\Model;
 
 class CorrentistaModel extends Model {
     public $id, $nome, $cpf, $senha, $data_nasc;
@@ -29,14 +28,11 @@ class CorrentistaModel extends Model {
         $this->rows = $dao->select();
     }
 
-    public function delete(int $id)
+     public function delete()
     {
-        include 'DAO/CorrentistaDAO.php';
-        $dao = new CorrentistaDAO();
-
-        $dao->delete($id);
-
+        (new CorrentistaDAO())->delete($this->id);
     }
+
 
     public function getById(int $id)
     {

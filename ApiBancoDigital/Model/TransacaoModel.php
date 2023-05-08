@@ -2,7 +2,6 @@
 
 namespace ApiBancoDigital\Model;
 use ApiBancoDigital\DAO\TransacaoDAO;
-use ApiBancoDigital\DAO\Model\Model;
 
 class TransacaoModel extends Model {
     public $id, $data_trans, $valor, $id_conta_enviou, $id_conta_recebeu;
@@ -29,12 +28,9 @@ class TransacaoModel extends Model {
         $this->rows = $dao->select();
     }
 
-    public function delete(int $id)
+    public function delete()
     {
-        include 'DAO/TransacaoDAO.php';
-        $dao = new TransacaoDAO();
-
-        $dao->delete($id);
+        (new TransacaoDAO())->delete($this->id);
     }
 
     public function getById(int $id)

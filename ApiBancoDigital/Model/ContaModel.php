@@ -3,7 +3,6 @@
 namespace ApiBancoDigital\Model;
 
 use ApiBancoDigital\DAO\ContaDAO;
-use ApiBancoDigital\DAO\Model\Model;
 
 class ContaModel extends Model {
     public $id, $tipo, $saldo, $limite, $id_correntista;
@@ -32,12 +31,9 @@ class ContaModel extends Model {
 
     }
 
-    public function delete(int $id)
+    public function delete()
     {
-        include 'DAO/ContaDAO.php';
-        $dao = new ContaDAO();
-
-        $dao->delete($id);
+        (new ContaDAO())->delete($this->id);
     }
     
     public function getById(int $id)

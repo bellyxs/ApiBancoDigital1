@@ -1,9 +1,7 @@
 <?php
 
 namespace ApiBancoDigital\Model;
-
 use ApiBancoDigital\DAO\ChavePixDAO;
-use ApiBancoDigital\DAO\Model\Model;
 
 class ChavePixModel extends Model {
     public $id, $tipo, $chave, $id_conta;
@@ -32,13 +30,11 @@ class ChavePixModel extends Model {
 
     }
 
-    public function delete(int $id)
+    public function delete()
     {
-        include 'DAO/ChavePixDAO.php';
-        $dao = new ChavePixDAO();
-
-        $dao->delete($id);
+        (new ChavePixDAO())->delete($this->id);
     }
+
     
     public function getById(int $id)
     {
